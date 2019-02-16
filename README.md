@@ -2,7 +2,17 @@ billiard
 
 
 ```bash
-pip install shapely
-pip install msgpack_numpy
-pip install pi3d
+pip install shapely msgpack_numpy pi3d
+
+
+cd speed
+python setup.py build_ext -i
+```
+
+
+
+```bash
+python -m cProfile -o result.out -s cumulative env.py
+
+gprof2dot -f pstats result.out | dot -Tpng -o result.png
 ```
