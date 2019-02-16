@@ -31,12 +31,11 @@ frame_to_render = []
 
 utils.create_ball()
 
-utils.reset_position()
+# utils.reset_position()
 cue_ball = utils.find_ball(0)
-step = 0
-for i in range(10):
-    step += 1
 
+
+for step in range(10):
     render_index = len(frame_to_render) - 1
     for ball_obj_traject in calculate.PoolBall.instances_traject:
         ball_obj = next(i for i in calculate.PoolBall.instances if i.ball_index == ball_obj_traject.ball_index)
@@ -50,10 +49,8 @@ for i in range(10):
             render_index]
         ball_obj.heading_angle_changed = ball_obj_traject.heading_angle_changed_to_render[
             render_index]
+    # utils.plot_table(f'test{step}.jpg')
 
-    utils.plot_table(f'test{step}.jpg')
-
-    k = 103
     import time
     time.sleep(1)
 
@@ -142,7 +139,5 @@ for i in range(10):
                 find_traject=True)
             normal_loop = int(time_to_event / common.NOR_SAMP_PERIOD)
             remainder_time = time_to_event % common.NOR_SAMP_PERIOD
-
-
 
     render_index = 0

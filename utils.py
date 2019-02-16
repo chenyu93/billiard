@@ -50,26 +50,7 @@ def find_ball(index):
 
 def create_ball():
 
-    for i in range(10):
-        calculate.PoolBall(name='Cue_Ball' if i == 0 else f'Pool_Ball_{i}',
-                           ball_index=i,
-                           state=calculate.STATIONARY_STATE,
-                           r=[0,0,0],
-                           v=common.ZERO_VECTOR,
-                           w=common.ZERO_VECTOR,
-                           u=common.ZERO_VECTOR,
-                           heading_angle=0,
-                           traject_instance=False,
-                           light=light_source)
-
-    for ball_obj in calculate.PoolBall.instances:
-        ball_obj.ball_model.set_shader(BallShader)
-        ball_obj.ball_model.set_normal_shine(
-            Normtex, 0.0, Shinetex, 0.1, is_uv=False, bump_factor=0.0)
-        ball_obj.shadow.set_draw_details(ShadowShader, [Shadowtex])
-
-
-def reset_position():
+    # Create Ball
     r_breaking = table.BilliardTable.r
     r_epsil_breaking = table.BilliardTable.r_epsil
     DIAMETER = r_epsil_breaking + r_epsil_breaking
@@ -139,8 +120,130 @@ def reset_position():
     ]
     random.shuffle(pos)
     pos = [cue_pos, pos_1] + pos + [pos_9]
-    for i in range(10):
-        find_ball(i).r = pos[i]
+    cue_ball = calculate.PoolBall(
+        name="Cue_Ball",
+        ball_index=0,
+        state=calculate.STATIONARY_STATE,
+        r=pos[0],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+    pool_ball_5 = calculate.PoolBall(
+        name="Pool_Ball_5",
+        ball_index=5,
+        state=calculate.STATIONARY_STATE,
+        r=pos[5],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+    pool_ball_6 = calculate.PoolBall(
+        name="Pool_Ball_6",
+        ball_index=6,
+        state=calculate.STATIONARY_STATE,
+        r=pos[6],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+    pool_ball_4 = calculate.PoolBall(
+        name="Pool_Ball_4",
+        ball_index=4,
+        state=calculate.STATIONARY_STATE,
+        r=pos[4],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+    pool_ball_3 = calculate.PoolBall(
+        name="Pool_Ball_3",
+        ball_index=3,
+        state=calculate.STATIONARY_STATE,
+        r=pos[3],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+    pool_ball_2 = calculate.PoolBall(
+        name="Pool_Ball_2",
+        ball_index=2,
+        state=calculate.STATIONARY_STATE,
+        r=pos[2],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+    pool_ball_1 = calculate.PoolBall(
+        name="Pool_Ball_1",
+        ball_index=1,
+        state=calculate.STATIONARY_STATE,
+        r=pos[1],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+    pool_ball_8 = calculate.PoolBall(
+        name="Pool_Ball_8",
+        ball_index=8,
+        state=calculate.STATIONARY_STATE,
+        r=pos[8],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+    pool_ball_7 = calculate.PoolBall(
+        name="Pool_Ball_7",
+        ball_index=7,
+        state=calculate.STATIONARY_STATE,
+        r=pos[7],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+    pool_ball_9 = calculate.PoolBall(
+        name="Pool_Ball_9",
+        ball_index=9,
+        state=calculate.STATIONARY_STATE,
+        r=pos[9],
+        v=common.ZERO_VECTOR,
+        w=common.ZERO_VECTOR,
+        u=common.ZERO_VECTOR,
+        heading_angle=0,
+        traject_instance=False,
+        light=light_source)
+
+    for ball_obj in calculate.PoolBall.instances:
+        ball_obj.ball_model.set_shader(BallShader)
+        ball_obj.ball_model.set_normal_shine(
+            Normtex, 0.0, Shinetex, 0.1, is_uv=False, bump_factor=0.0)
+        ball_obj.shadow.set_draw_details(ShadowShader, [Shadowtex])
+
+
+def set_position(ball_index, r, on_table=True):
+    if on_table:
+        z = table.BilliardTable.table_height + table.BilliardTable.r
+    else:
+        z = table.BilliardTable.r
+    find_ball(ball_index).r = np.array([r[0], r[1], z])
 
 def plot_trajectories():
     track.draw()
