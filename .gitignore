@@ -4,3 +4,7 @@ speedup/build
 speedup/solve.egg-info
 speedup/*.so
 *.gif
+
+billiard_env/speedup/solve\.egg-info/
+
+billiard_env/speedup/build/
