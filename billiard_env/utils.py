@@ -290,7 +290,8 @@ def plot_animation(frame_to_render, file_name, duration):
         for ball_obj_traject in calculate.PoolBall.instances_traject:
             ball_obj = next(
                 i for i in calculate.PoolBall.instances if i.ball_index == ball_obj_traject.ball_index)
-
+            if ball_obj.r[2] != table.Pool8ftDetail.HEIGHT + table.Pool8ftDetail.BALL_R:
+                continue
             previous_r = ball_obj.r
             ball_obj.r = ball_obj_traject.r_to_render[render_index]
             # ball_obj.w_roll = ball_obj_traject.w_to_render[render_index]
@@ -342,6 +343,8 @@ def plot_table(file_name=None):
 
     TableModel.draw()
     for ball_obj in calculate.PoolBall.instances:
+        if ball_obj.r[2] != table.Pool8ftDetail.HEIGHT + table.Pool8ftDetail.BALL_R:
+            continue
         ball_obj.move_draw()
 
     with DISPLAY.lock:
