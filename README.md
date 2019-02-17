@@ -29,7 +29,7 @@ gprof2dot -f pstats result.out | dot -Tpng -o result.png
 
 ### Fast version for training
 ```python
-from pool_env import Env
+from billiard_env.pool_env import Env
 
 Env.set_speed(999)
 state = Env.get_state()
@@ -44,7 +44,7 @@ Env.plot_table('test2.jpg')
 
  e5-2680v2 single core, ~13 shoot per seconds.
 ```python
-from pool_env import Env
+from billiard_env.pool_env import Env
 import random
 from tqdm import tqdm
 Env.set_speed(999)
@@ -59,7 +59,7 @@ for _ in tqdm(range(100)):
 ### slow version for generating gif
 
 ```python
-from pool_env import Env
+from billiard_env.pool_env import Env
 
 Env.set_speed(0.032)   # 1 / 0.0032 = 31.25 fps
 state = Env.get_state()

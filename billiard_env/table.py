@@ -23,7 +23,7 @@
 # SOFTWARE.
 """Table for Pool or Snooker"""
 
-import common
+import billiard_env.common as common
 import numpy as np
 
 # Constant for table properties

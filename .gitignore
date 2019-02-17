@@ -8,3 +8,17 @@ speedup/*.so
 billiard_env/speedup/solve\.egg-info/
 
 billiard_env/speedup/build/
+
+*.so
+
+*.c
+
+billiard_env\.egg-info/
+
+build/
+
+cythonize\.dat
+
+dist/
+
+tests/test\.jpg

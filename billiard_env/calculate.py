@@ -24,11 +24,11 @@
 
 import numpy as np
 import pi3d
-import common
-import table
+import billiard_env.common as common
+import billiard_env.table as table
 
 
-import speedup.solve as solve
+import billiard_env.speedup.solve as solve
 solve_roots = solve.cython_solve_roots
 
 TimeSpeedUp = 0.0
@@ -476,7 +476,7 @@ class PoolBall(object):
             self.ball_model = pi3d.Model(
                 self,
                 name=name,
-                file_string='media/models/' + name + '.obj',
+                file_string='billiard_env/media/models/' + name + '.obj',
                 x=0,
                 y=0,
                 z=0,

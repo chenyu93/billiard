@@ -1,14 +1,13 @@
 import pi3d
-import common
-from math import sin, cos, radians
-import table
+import billiard_env.common as common
+from math import sin, radians
+import billiard_env.table as table
 import pathlib
 import os
 import shutil
 import random
-import calculate
+import billiard_env.calculate as calculate
 import numpy as np
-import imageio
 from PIL import Image
 
 
@@ -26,9 +25,9 @@ DISPLAY.frames_per_second = 30
 BallShader = pi3d.Shader("mat_reflect")
 TableShader = BallShader
 ShadowShader = pi3d.Shader("uv_flat")
-Normtex = pi3d.Texture("media/textures/grasstile_n.jpg")
-Shinetex = pi3d.Texture("media/textures/photosphere_small.jpg")
-Shadowtex = pi3d.Texture("media/textures/shadow.png")
+Normtex = pi3d.Texture("billiard_env/media/textures/grasstile_n.jpg")
+Shinetex = pi3d.Texture("billiard_env/media/textures/photosphere_small.jpg")
+Shadowtex = pi3d.Texture("billiard_env/media/textures/shadow.png")
 
 light_source = pi3d.Light(
     lightpos=(10, -(0.762 + 0.028575) * 10 * 5.2, 1),
@@ -37,7 +36,7 @@ light_source = pi3d.Light(
     is_point=False)
 
 TableModel = pi3d.Model(
-    file_string='media/models/Pool_Table_8ft.obj',
+    file_string='billiard_env/media/models/Pool_Table_8ft.obj',
     name='Table',
     sx=common.DIM_RATIO,
     sy=common.DIM_RATIO,
@@ -54,7 +53,6 @@ CamTilt = 90.0  # CamTilt of camera
 
 def find_ball(index):
     return next(i for i in calculate.PoolBall.instances if i.ball_index == index)
-
 
 
 def get_random_initial_pos():
@@ -127,6 +125,7 @@ def get_random_initial_pos():
     ]
     random.shuffle(pos)
     return np.array([cue_pos, pos_1] + pos + [pos_9])
+
 
 def create_ball():
 
@@ -286,7 +285,7 @@ def plot_animation(frame_to_render, file_name, duration):
         pass
     pathlib.Path('.gif').mkdir()
     for render_index in range(len(frame_to_render)):
-        if frame_to_render[render_index] != 1/ duration:
+        if frame_to_render[render_index] != 1 / duration:
             continue
         for ball_obj_traject in calculate.PoolBall.instances_traject:
             ball_obj = next(
@@ -329,6 +328,7 @@ def plot_animation(frame_to_render, file_name, duration):
         os.system(f'convert .gif/* .tmp.gif')
         os.system(f'convert .tmp.gif -fuzz 10% -layers Optimize {file_name}')
         print(f'generate {file_name}')
+
 
 def plot_table(file_name=None):
     """show static table."""

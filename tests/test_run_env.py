@@ -1,4 +1,4 @@
-from pool_env import Env
+from billiard_env.pool_env import Env
 import random
 from tqdm import tqdm
 Env.set_speed(999)

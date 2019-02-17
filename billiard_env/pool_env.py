@@ -1,16 +1,10 @@
 # pylint: skip-file
 
-import sys
-import os
-import pi3d
-import common
-import random
-import calculate
-import time
-import table
-from math import sin, cos, radians
-import socket
-import utils
+
+import billiard_env.common as common
+import billiard_env.calculate as calculate
+import billiard_env.table as table
+import billiard_env.utils as utils
 import numpy as np
 
 # pylint: disable-msg=C0103

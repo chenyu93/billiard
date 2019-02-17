@@ -395,9 +395,9 @@ body.cython { font-family: courier; font-size: 12; }
 <pre class="cython line score-0">&#xA0;<span class="">29</span>: </pre>
 <pre class="cython line score-108" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">30</span>: <span class="k">def</span> <span class="nf">cython_solve_quartic</span><span class="p">(</span><span class="nb">long</span> <span class="n">double</span> <span class="n">coef_a</span><span class="p">,</span> <span class="nb">long</span> <span class="n">double</span> <span class="n">coef_b</span><span class="p">,</span> <span class="nb">long</span> <span class="n">double</span> <span class="n">coef_c</span><span class="p">,</span></pre>
 <pre class='cython code score-108 '>/* Python wrapper */
-static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_1cython_solve_quartic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11snooker_env_7speedup_5solve_1cython_solve_quartic = {"cython_solve_quartic", (PyCFunction)__pyx_pw_11snooker_env_7speedup_5solve_1cython_solve_quartic, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_1cython_solve_quartic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12billiard_env_7speedup_5solve_1cython_solve_quartic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12billiard_env_7speedup_5solve_1cython_solve_quartic = {"cython_solve_quartic", (PyCFunction)__pyx_pw_12billiard_env_7speedup_5solve_1cython_solve_quartic, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12billiard_env_7speedup_5solve_1cython_solve_quartic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   long double __pyx_v_coef_a;
   long double __pyx_v_coef_b;
   long double __pyx_v_coef_c;
@@ -478,18 +478,18 @@ static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_1cython_solve_quartic(Py
   __pyx_L5_argtuple_error:;
   <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("cython_solve_quartic", 1, 5, 5, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(0, 30, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("snooker_env.speedup.solve.cython_solve_quartic", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("billiard_env.speedup.solve.cython_solve_quartic", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11snooker_env_7speedup_5solve_cython_solve_quartic(__pyx_self, __pyx_v_coef_a, __pyx_v_coef_b, __pyx_v_coef_c, __pyx_v_coef_d, __pyx_v_coef_e);
+  __pyx_r = __pyx_pf_12billiard_env_7speedup_5solve_cython_solve_quartic(__pyx_self, __pyx_v_coef_a, __pyx_v_coef_b, __pyx_v_coef_c, __pyx_v_coef_d, __pyx_v_coef_e);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_cython_solve_quartic(CYTHON_UNUSED PyObject *__pyx_self, long double __pyx_v_coef_a, long double __pyx_v_coef_b, long double __pyx_v_coef_c, long double __pyx_v_coef_d, long double __pyx_v_coef_e) {
+static PyObject *__pyx_pf_12billiard_env_7speedup_5solve_cython_solve_quartic(CYTHON_UNUSED PyObject *__pyx_self, long double __pyx_v_coef_a, long double __pyx_v_coef_b, long double __pyx_v_coef_c, long double __pyx_v_coef_d, long double __pyx_v_coef_e) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("cython_solve_quartic", 0);
@@ -497,7 +497,7 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_cython_solve_quartic(CYT
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("snooker_env.speedup.solve.cython_solve_quartic", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("billiard_env.speedup.solve.cython_solve_quartic", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
@@ -509,11 +509,11 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_cython_solve_quartic(CYT
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple_);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple_);
 /* … */
-  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_11snooker_env_7speedup_5solve_1cython_solve_quartic, NULL, __pyx_n_s_snooker_env_speedup_solve);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)</span>
+  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_12billiard_env_7speedup_5solve_1cython_solve_quartic, NULL, __pyx_n_s_billiard_env_speedup_solve);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_cython_solve_quartic, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 30, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_codeobj__2 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_solve_pyx, __pyx_n_s_cython_solve_quartic, 30, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 30, __pyx_L1_error)</span>
+  __pyx_codeobj__2 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_billiard_env_speedup_solve_pyx, __pyx_n_s_cython_solve_quartic, 30, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 30, __pyx_L1_error)</span>
 </pre><pre class="cython line score-0">&#xA0;<span class="">31</span>:                             <span class="nb">long</span> <span class="n">double</span> <span class="n">coef_d</span><span class="p">,</span> <span class="nb">long</span> <span class="n">double</span> <span class="n">coef_e</span><span class="p">):</span></pre>
 <pre class="cython line score-6" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">32</span>:     <span class="k">return</span> <span class="n">solve_quartic</span><span class="p">(</span><span class="n">coef_a</span><span class="p">,</span> <span class="n">coef_b</span><span class="p">,</span> <span class="n">coef_c</span><span class="p">,</span> <span class="n">coef_d</span><span class="p">,</span> <span class="n">coef_e</span><span class="p">)</span></pre>
 <pre class='cython code score-6 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
@@ -525,9 +525,9 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_cython_solve_quartic(CYT
 </pre><pre class="cython line score-0">&#xA0;<span class="">33</span>: </pre>
 <pre class="cython line score-92" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">34</span>: <span class="k">def</span> <span class="nf">cython_solve_cubic</span><span class="p">(</span><span class="nb">long</span> <span class="n">double</span> <span class="n">coef_a</span><span class="p">,</span> <span class="nb">long</span> <span class="n">double</span> <span class="n">coef_b</span><span class="p">,</span> <span class="nb">long</span> <span class="n">double</span> <span class="n">coef_c</span><span class="p">,</span></pre>
 <pre class='cython code score-92 '>/* Python wrapper */
-static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_3cython_solve_cubic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11snooker_env_7speedup_5solve_3cython_solve_cubic = {"cython_solve_cubic", (PyCFunction)__pyx_pw_11snooker_env_7speedup_5solve_3cython_solve_cubic, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_3cython_solve_cubic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12billiard_env_7speedup_5solve_3cython_solve_cubic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12billiard_env_7speedup_5solve_3cython_solve_cubic = {"cython_solve_cubic", (PyCFunction)__pyx_pw_12billiard_env_7speedup_5solve_3cython_solve_cubic, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12billiard_env_7speedup_5solve_3cython_solve_cubic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   long double __pyx_v_coef_a;
   long double __pyx_v_coef_b;
   long double __pyx_v_coef_c;
@@ -597,18 +597,18 @@ static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_3cython_solve_cubic(PyOb
   __pyx_L5_argtuple_error:;
   <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("cython_solve_cubic", 1, 4, 4, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(0, 34, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("snooker_env.speedup.solve.cython_solve_cubic", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("billiard_env.speedup.solve.cython_solve_cubic", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11snooker_env_7speedup_5solve_2cython_solve_cubic(__pyx_self, __pyx_v_coef_a, __pyx_v_coef_b, __pyx_v_coef_c, __pyx_v_coef_d);
+  __pyx_r = __pyx_pf_12billiard_env_7speedup_5solve_2cython_solve_cubic(__pyx_self, __pyx_v_coef_a, __pyx_v_coef_b, __pyx_v_coef_c, __pyx_v_coef_d);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_2cython_solve_cubic(CYTHON_UNUSED PyObject *__pyx_self, long double __pyx_v_coef_a, long double __pyx_v_coef_b, long double __pyx_v_coef_c, long double __pyx_v_coef_d) {
+static PyObject *__pyx_pf_12billiard_env_7speedup_5solve_2cython_solve_cubic(CYTHON_UNUSED PyObject *__pyx_self, long double __pyx_v_coef_a, long double __pyx_v_coef_b, long double __pyx_v_coef_c, long double __pyx_v_coef_d) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("cython_solve_cubic", 0);
@@ -616,7 +616,7 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_2cython_solve_cubic(CYTH
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("snooker_env.speedup.solve.cython_solve_cubic", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("billiard_env.speedup.solve.cython_solve_cubic", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
@@ -628,11 +628,11 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_2cython_solve_cubic(CYTH
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__3);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__3);
 /* … */
-  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_11snooker_env_7speedup_5solve_3cython_solve_cubic, NULL, __pyx_n_s_snooker_env_speedup_solve);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)</span>
+  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_12billiard_env_7speedup_5solve_3cython_solve_cubic, NULL, __pyx_n_s_billiard_env_speedup_solve);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_cython_solve_cubic, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 34, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_codeobj__4 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_solve_pyx, __pyx_n_s_cython_solve_cubic, 34, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 34, __pyx_L1_error)</span>
+  __pyx_codeobj__4 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_billiard_env_speedup_solve_pyx, __pyx_n_s_cython_solve_cubic, 34, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 34, __pyx_L1_error)</span>
 </pre><pre class="cython line score-0">&#xA0;<span class="">35</span>:                         <span class="nb">long</span> <span class="n">double</span> <span class="n">coef_d</span><span class="p">):</span></pre>
 <pre class="cython line score-6" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">36</span>:     <span class="k">return</span> <span class="n">solve_cubic</span><span class="p">(</span><span class="n">coef_a</span><span class="p">,</span> <span class="n">coef_b</span><span class="p">,</span> <span class="n">coef_c</span><span class="p">,</span> <span class="n">coef_d</span><span class="p">)</span></pre>
 <pre class='cython code score-6 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
@@ -644,9 +644,9 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_2cython_solve_cubic(CYTH
 </pre><pre class="cython line score-0">&#xA0;<span class="">37</span>: </pre>
 <pre class="cython line score-76" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">38</span>: <span class="k">def</span> <span class="nf">cython_solve_quadratic</span><span class="p">(</span><span class="nb">long</span> <span class="n">double</span> <span class="n">coef_a</span><span class="p">,</span> <span class="nb">long</span> <span class="n">double</span> <span class="n">coef_b</span><span class="p">,</span> <span class="nb">long</span> <span class="n">double</span> <span class="n">coef_c</span><span class="p">):</span></pre>
 <pre class='cython code score-76 '>/* Python wrapper */
-static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_5cython_solve_quadratic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11snooker_env_7speedup_5solve_5cython_solve_quadratic = {"cython_solve_quadratic", (PyCFunction)__pyx_pw_11snooker_env_7speedup_5solve_5cython_solve_quadratic, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_5cython_solve_quadratic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12billiard_env_7speedup_5solve_5cython_solve_quadratic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12billiard_env_7speedup_5solve_5cython_solve_quadratic = {"cython_solve_quadratic", (PyCFunction)__pyx_pw_12billiard_env_7speedup_5solve_5cython_solve_quadratic, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12billiard_env_7speedup_5solve_5cython_solve_quadratic(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   long double __pyx_v_coef_a;
   long double __pyx_v_coef_b;
   long double __pyx_v_coef_c;
@@ -705,18 +705,18 @@ static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_5cython_solve_quadratic(
   __pyx_L5_argtuple_error:;
   <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("cython_solve_quadratic", 1, 3, 3, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(0, 38, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("snooker_env.speedup.solve.cython_solve_quadratic", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("billiard_env.speedup.solve.cython_solve_quadratic", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11snooker_env_7speedup_5solve_4cython_solve_quadratic(__pyx_self, __pyx_v_coef_a, __pyx_v_coef_b, __pyx_v_coef_c);
+  __pyx_r = __pyx_pf_12billiard_env_7speedup_5solve_4cython_solve_quadratic(__pyx_self, __pyx_v_coef_a, __pyx_v_coef_b, __pyx_v_coef_c);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_4cython_solve_quadratic(CYTHON_UNUSED PyObject *__pyx_self, long double __pyx_v_coef_a, long double __pyx_v_coef_b, long double __pyx_v_coef_c) {
+static PyObject *__pyx_pf_12billiard_env_7speedup_5solve_4cython_solve_quadratic(CYTHON_UNUSED PyObject *__pyx_self, long double __pyx_v_coef_a, long double __pyx_v_coef_b, long double __pyx_v_coef_c) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("cython_solve_quadratic", 0);
@@ -724,7 +724,7 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_4cython_solve_quadratic(
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("snooker_env.speedup.solve.cython_solve_quadratic", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("billiard_env.speedup.solve.cython_solve_quadratic", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
@@ -736,11 +736,11 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_4cython_solve_quadratic(
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__5);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__5);
 /* … */
-  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_11snooker_env_7speedup_5solve_5cython_solve_quadratic, NULL, __pyx_n_s_snooker_env_speedup_solve);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)</span>
+  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_12billiard_env_7speedup_5solve_5cython_solve_quadratic, NULL, __pyx_n_s_billiard_env_speedup_solve);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_cython_solve_quadratic, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 38, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_codeobj__6 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_solve_pyx, __pyx_n_s_cython_solve_quadratic, 38, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 38, __pyx_L1_error)</span>
+  __pyx_codeobj__6 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_billiard_env_speedup_solve_pyx, __pyx_n_s_cython_solve_quadratic, 38, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 38, __pyx_L1_error)</span>
 </pre><pre class="cython line score-6" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">39</span>:     <span class="k">return</span> <span class="n">solve_quadratic</span><span class="p">(</span><span class="n">coef_a</span><span class="p">,</span> <span class="n">coef_b</span><span class="p">,</span> <span class="n">coef_c</span><span class="p">)</span></pre>
 <pre class='cython code score-6 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_1 = <span class='py_c_api'>PyFloat_FromDouble</span>(solve_quadratic(__pyx_v_coef_a, __pyx_v_coef_b, __pyx_v_coef_c));<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)</span>
@@ -751,20 +751,20 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_4cython_solve_quadratic(
 </pre><pre class="cython line score-0">&#xA0;<span class="">40</span>: </pre>
 <pre class="cython line score-14" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">41</span>: <span class="k">def</span> <span class="nf">cython_solve_roots</span><span class="p">(</span><span class="n">coef</span><span class="p">):</span></pre>
 <pre class='cython code score-14 '>/* Python wrapper */
-static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_7cython_solve_roots(PyObject *__pyx_self, PyObject *__pyx_v_coef); /*proto*/
-static PyMethodDef __pyx_mdef_11snooker_env_7speedup_5solve_7cython_solve_roots = {"cython_solve_roots", (PyCFunction)__pyx_pw_11snooker_env_7speedup_5solve_7cython_solve_roots, METH_O, 0};
-static PyObject *__pyx_pw_11snooker_env_7speedup_5solve_7cython_solve_roots(PyObject *__pyx_self, PyObject *__pyx_v_coef) {
+static PyObject *__pyx_pw_12billiard_env_7speedup_5solve_7cython_solve_roots(PyObject *__pyx_self, PyObject *__pyx_v_coef); /*proto*/
+static PyMethodDef __pyx_mdef_12billiard_env_7speedup_5solve_7cython_solve_roots = {"cython_solve_roots", (PyCFunction)__pyx_pw_12billiard_env_7speedup_5solve_7cython_solve_roots, METH_O, 0};
+static PyObject *__pyx_pw_12billiard_env_7speedup_5solve_7cython_solve_roots(PyObject *__pyx_self, PyObject *__pyx_v_coef) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("cython_solve_roots (wrapper)", 0);
-  __pyx_r = __pyx_pf_11snooker_env_7speedup_5solve_6cython_solve_roots(__pyx_self, ((PyObject *)__pyx_v_coef));
+  __pyx_r = __pyx_pf_12billiard_env_7speedup_5solve_6cython_solve_roots(__pyx_self, ((PyObject *)__pyx_v_coef));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_6cython_solve_roots(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_coef) {
+static PyObject *__pyx_pf_12billiard_env_7speedup_5solve_6cython_solve_roots(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_coef) {
   unsigned char __pyx_v_coef_len;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
@@ -773,7 +773,7 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_6cython_solve_roots(CYTH
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("snooker_env.speedup.solve.cython_solve_roots", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("billiard_env.speedup.solve.cython_solve_roots", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
@@ -785,7 +785,7 @@ static PyObject *__pyx_pf_11snooker_env_7speedup_5solve_6cython_solve_roots(CYTH
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__7);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__7);
 /* … */
-  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_11snooker_env_7speedup_5solve_7cython_solve_roots, NULL, __pyx_n_s_snooker_env_speedup_solve);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)</span>
+  __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_12billiard_env_7speedup_5solve_7cython_solve_roots, NULL, __pyx_n_s_billiard_env_speedup_solve);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_cython_solve_roots, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 41, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
