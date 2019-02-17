@@ -1,8 +1,8 @@
 from pool_env import Env
+import random
+from tqdm import tqdm
+Env.set_speed(999)
 
-
-Env.set_speed(0.032)
-
-state = Env.get_state()
-Env.act(angle=0.0, v_cue=2.0, gif_filename='test.gif')
-Env.plot_table('test.jpg')
+for _ in tqdm(range(100)):
+    Env.reset()
+    Env.act(angle=0.0, v_cue=1.0 + random.random())

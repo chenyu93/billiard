@@ -56,9 +56,8 @@ def find_ball(index):
     return next(i for i in calculate.PoolBall.instances if i.ball_index == index)
 
 
-def create_ball():
 
-    # Create Ball
+def get_random_initial_pos():
     r_breaking = table.BilliardTable.r
     r_epsil_breaking = table.BilliardTable.r_epsil
     DIAMETER = r_epsil_breaking + r_epsil_breaking
@@ -127,7 +126,12 @@ def create_ball():
         ])
     ]
     random.shuffle(pos)
-    pos = [cue_pos, pos_1] + pos + [pos_9]
+    return np.array([cue_pos, pos_1] + pos + [pos_9])
+
+def create_ball():
+
+    # Create Ball
+    pos = get_random_initial_pos()
     cue_ball = calculate.PoolBall(
         name="Cue_Ball",
         ball_index=0,

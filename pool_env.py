@@ -42,6 +42,10 @@ class Env:
         utils.plot_table(filename)
 
     @staticmethod
+    def reset():
+        Env.set_state(utils.get_random_initial_pos())
+
+    @staticmethod
     def get_state():
         positions = np.zeros((10, 3))
         for ball_index in range(10):
