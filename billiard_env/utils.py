@@ -11,6 +11,15 @@ import numpy as np
 from PIL import Image
 
 
+class DisplaySwitch:
+    DISPLAY = None
+    CAMERA = None
+    @staticmethod
+    def use_display():
+        DisplaySwitch.DISPLAY = pi3d.Display.create(x=120, y=100, w=110 * 5, h=190 * 5)
+        DisplaySwitch.DISPLAY.frames_per_second = 30
+        DisplaySwitch.CAMERA = pi3d.Camera.instance()
+
 table.BilliardTable.set_detail_auto(
     table_type=table.TableType.POOL,
     table_size=table.TableSize.EIGHT_FT,
@@ -19,9 +28,13 @@ calculate.BilliardBall.set_r(table.BilliardTable.r)
 calculate.BilliardBall.set_mass(common.DEF_BALL_MASS, common.DEF_CUE_MASS)
 calculate.CalConst.initial_constant()
 
-DISPLAY = pi3d.Display.create(x=120, y=100, w=110 * 5, h=190 * 5)
 
-DISPLAY.frames_per_second = 30
+
+CamRadius = 30.0  # radius of camera position
+CamRotation = 0.0  # rotation of camera
+CamTilt = 90.0  # CamTilt of camera
+
+
 BallShader = pi3d.Shader("mat_reflect")
 TableShader = BallShader
 ShadowShader = pi3d.Shader("uv_flat")
@@ -44,11 +57,6 @@ TableModel = pi3d.Model(
     light=light_source)
 TableModel.set_shader(TableShader)
 TableModel.set_normal_shine(Normtex, 500.0, Shinetex, 0.05, bump_factor=0.1)
-
-CAMERA = pi3d.Camera.instance()
-CamRadius = 30.0  # radius of camera position
-CamRotation = 0.0  # rotation of camera
-CamTilt = 90.0  # CamTilt of camera
 
 
 def find_ball(index):
@@ -302,27 +310,27 @@ def plot_animation(frame_to_render, file_name, duration):
             ball_obj.heading_angle_changed = ball_obj_traject.heading_angle_changed_to_render[
                 render_index]
 
-        DISPLAY.clear()
-        CAMERA.reset()
-        CAMERA.rotateX(-CamTilt)
-        CAMERA.rotateY(0)
+        DisplaySwitch.DISPLAY.clear()
+        DisplaySwitch.CAMERA.reset()
+        DisplaySwitch.CAMERA.rotateX(-CamTilt)
+        DisplaySwitch.CAMERA.rotateY(0)
         cue_ball = find_ball(0)
-        CAMERA.position((0, (cue_ball.r[common.Z_AXIS] * common.DIM_RATIO)
+        DisplaySwitch.CAMERA.position((0, (cue_ball.r[common.Z_AXIS] * common.DIM_RATIO)
                          + (CamRadius * sin(radians(CamTilt))), 0))
 
         TableModel.draw()
         for ball_obj in calculate.PoolBall.instances:
             ball_obj.move_draw()
 
-        with DISPLAY.lock:
-            DISPLAY.sprites_to_load, to_load = set(), DISPLAY.sprites_to_load
-            DISPLAY.sprites.extend(to_load)
-        DISPLAY._for_each_sprite(lambda s: s.load_opengl(), to_load)
+        with DisplaySwitch.DISPLAY.lock:
+            DisplaySwitch.DISPLAY.sprites_to_load, to_load = set(), DisplaySwitch.DISPLAY.sprites_to_load
+            DisplaySwitch.DISPLAY.sprites.extend(to_load)
+        DisplaySwitch.DISPLAY._for_each_sprite(lambda s: s.load_opengl(), to_load)
 
-        DISPLAY._tidy()
+        DisplaySwitch.DISPLAY._tidy()
         img = pi3d.screenshot()
         im = Image.frombuffer(
-            'RGB', (DISPLAY.width, DISPLAY.height), img, 'raw', 'RGB', 0, 1)
+            'RGB', (DisplaySwitch.DISPLAY.width, DisplaySwitch.DISPLAY.height), img, 'raw', 'RGB', 0, 1)
         im.thumbnail((im.size[0] // 3, im.size[1] // 3), Image.ANTIALIAS)
         im.save(f'.gif/{100000 + render_index}.png')
     if frame_to_render:
@@ -333,12 +341,12 @@ def plot_animation(frame_to_render, file_name, duration):
 
 def plot_table(file_name=None):
     """show static table."""
-    DISPLAY.clear()
-    CAMERA.reset()
-    CAMERA.rotateX(-CamTilt)
-    CAMERA.rotateY(0)
+    DisplaySwitch.DISPLAY.clear()
+    DisplaySwitch.CAMERA.reset()
+    DisplaySwitch.CAMERA.rotateX(-CamTilt)
+    DisplaySwitch.CAMERA.rotateY(0)
     cue_ball = find_ball(0)
-    CAMERA.position((0, (cue_ball.r[common.Z_AXIS] * common.DIM_RATIO)
+    DisplaySwitch.CAMERA.position((0, (cue_ball.r[common.Z_AXIS] * common.DIM_RATIO)
                      + (CamRadius * sin(radians(CamTilt))), 0))
 
     TableModel.draw()
@@ -347,11 +355,11 @@ def plot_table(file_name=None):
             continue
         ball_obj.move_draw()
 
-    with DISPLAY.lock:
-        DISPLAY.sprites_to_load, to_load = set(), DISPLAY.sprites_to_load
-        DISPLAY.sprites.extend(to_load)
-    DISPLAY._for_each_sprite(lambda s: s.load_opengl(), to_load)
+    with DisplaySwitch.DISPLAY.lock:
+        DisplaySwitch.DISPLAY.sprites_to_load, to_load = set(), DisplaySwitch.DISPLAY.sprites_to_load
+        DisplaySwitch.DISPLAY.sprites.extend(to_load)
+    DisplaySwitch.DISPLAY._for_each_sprite(lambda s: s.load_opengl(), to_load)
 
-    DISPLAY._tidy()
+    DisplaySwitch.DISPLAY._tidy()
     if file_name is not None:
         pi3d.screenshot(file_name)

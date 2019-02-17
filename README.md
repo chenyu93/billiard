@@ -29,6 +29,9 @@ gprof2dot -f pstats result.out | dot -Tpng -o result.png
 
 ### Fast version for training
 ```python
+from billiard_env.utils import DisplaySwitch
+DisplaySwitch.use_display()
+
 from billiard_env.pool_env import Env
 
 Env.set_speed(999)
@@ -42,8 +45,9 @@ Env.plot_table('test2.jpg')
 
 ### fast version speed performance
 
- e5-2680v2 single core, ~13 shoot per seconds.
+ e5-2680v2 single core, ~13 shoot per seconds. no need for display
 ```python
+
 from billiard_env.pool_env import Env
 import random
 from tqdm import tqdm
@@ -59,6 +63,9 @@ for _ in tqdm(range(100)):
 ### slow version for generating gif
 
 ```python
+from billiard_env.utils import DisplaySwitch
+DisplaySwitch.use_display()
+
 from billiard_env.pool_env import Env
 
 Env.set_speed(0.032)   # 1 / 0.0032 = 31.25 fps
