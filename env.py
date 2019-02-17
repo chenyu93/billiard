@@ -44,7 +44,7 @@ for step in range(10):
     cue_ball.copy_ball_to_traject()
 
     CamRotation = 0
-    v_cue = 0.5
+    v_cue = 1.5
     cue_angle = 0
     top_back_spin = 0
     left_right_spin = 0

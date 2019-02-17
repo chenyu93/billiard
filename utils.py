@@ -2,6 +2,9 @@ import pi3d
 import common
 from math import sin, cos, radians
 import table
+import pathlib
+import os
+import shutil
 import random
 import calculate
 import numpy as np
@@ -48,8 +51,10 @@ CamRadius = 30.0  # radius of camera position
 CamRotation = 0.0  # rotation of camera
 CamTilt = 90.0  # CamTilt of camera
 
+
 def find_ball(index):
-    return next(i for i in calculate.PoolBall.instances if i.ball_index ==index)
+    return next(i for i in calculate.PoolBall.instances if i.ball_index == index)
+
 
 def create_ball():
 
@@ -248,22 +253,23 @@ def set_position(ball_index, r, on_table=True):
         z = table.BilliardTable.r
     find_ball(ball_index).r = np.array([r[0], r[1], z])
 
-def plot_trajectories():
-    track.draw()
-    if len(traject_list) < 500:
-        for i in range(500 - len(traject_list)):
-            traject_list.append(traject_list[-1])
-    elif len(traject_list) >= 500:
-        traject_list = traject_list[:500]
-
-    track.buf[0].re_init(traject_list)
+# def plot_trajectories():
+#     track.draw()
+#     if len(traject_list) < 500:
+#         for i in range(500 - len(traject_list)):
+#             traject_list.append(traject_list[-1])
+#     elif len(traject_list) >= 500:
+#         traject_list = traject_list[:500]
+#
+#     track.buf[0].re_init(traject_list)
 
 
 def move_ball_to_stationary(frame_to_render):
     render_index = len(frame_to_render) - 1
 
     for ball_obj_traject in calculate.PoolBall.instances_traject:
-        ball_obj = next(i for i in calculate.PoolBall.instances if i.ball_index == ball_obj_traject.ball_index)
+        ball_obj = next(
+            i for i in calculate.PoolBall.instances if i.ball_index == ball_obj_traject.ball_index)
 
         previous_r = ball_obj.r
         ball_obj.r = ball_obj_traject.r_to_render[render_index]
@@ -276,14 +282,18 @@ def move_ball_to_stationary(frame_to_render):
             render_index]
 
 
-
 def plot_animation(frame_to_render, file_name, duration):
-
-    images = []
-    print(frame_to_render)
+    try:
+        shutil.rmtree('.gif')
+    except:
+        pass
+    pathlib.Path('.gif').mkdir()
     for render_index in range(len(frame_to_render)):
+        if frame_to_render[render_index] != 1/ duration:
+            continue
         for ball_obj_traject in calculate.PoolBall.instances_traject:
-            ball_obj = next(i for i in calculate.PoolBall.instances if i.ball_index == ball_obj_traject.ball_index)
+            ball_obj = next(
+                i for i in calculate.PoolBall.instances if i.ball_index == ball_obj_traject.ball_index)
 
             previous_r = ball_obj.r
             ball_obj.r = ball_obj_traject.r_to_render[render_index]
@@ -314,11 +324,13 @@ def plot_animation(frame_to_render, file_name, duration):
 
         DISPLAY._tidy()
         img = pi3d.screenshot()
-        im = Image.frombuffer('RGB', (DISPLAY.width, DISPLAY.height), img, 'raw', 'RGB', 0, 1)
-        images.append(np.array(img, dtype=np.uint8))
+        im = Image.frombuffer(
+            'RGB', (DISPLAY.width, DISPLAY.height), img, 'raw', 'RGB', 0, 1)
+        im.thumbnail((im.size[0] // 3, im.size[1] // 3), Image.ANTIALIAS)
+        im.save(f'.gif/{100000 + render_index}.png')
     if frame_to_render:
-        imageio.mimwrite(file_name, images, 'GIF-FI', duration=duration)
-
+        os.system(f'convert .gif/* {file_name}')
+        print(f'generate {file_name}')
 
 def plot_table(file_name=None):
     """show static table."""
