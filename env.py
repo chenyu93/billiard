@@ -17,9 +17,8 @@ import numpy as np
 # pylint: disable-msg=C0103
 
 
-V_CUE_DECIMAL_PLACE = 10
-# Initial Game Type
-
+# 0.032  for 31.25 FPS sample rate; 999 for faster
+common.NOR_SAMP_PERIOD = 0.032
 
 logging.basicConfig(
     level=logging.INFO,
@@ -34,32 +33,18 @@ utils.create_ball()
 # utils.reset_position()
 cue_ball = utils.find_ball(0)
 
-
 for step in range(10):
-    render_index = len(frame_to_render) - 1
-    for ball_obj_traject in calculate.PoolBall.instances_traject:
-        ball_obj = next(i for i in calculate.PoolBall.instances if i.ball_index == ball_obj_traject.ball_index)
-
-        previous_r = ball_obj.r
-        ball_obj.r = ball_obj_traject.r_to_render[render_index]
-        # ball_obj.w_roll = ball_obj_traject.w_to_render[render_index]
-        ball_obj.present_state = ball_obj_traject.state_to_render[
-            render_index]
-        ball_obj.heading_angle = ball_obj_traject.heading_angle_to_render[
-            render_index]
-        ball_obj.heading_angle_changed = ball_obj_traject.heading_angle_changed_to_render[
-            render_index]
+    # utils.move_ball_to_stationary(frame_to_render)
+    utils.plot_animation(frame_to_render, f'test{step}.gif', common.NOR_SAMP_PERIOD)
     # utils.plot_table(f'test{step}.jpg')
 
-    import time
-    time.sleep(1)
 
     # traject_list = []
     del frame_to_render[:]
     cue_ball.copy_ball_to_traject()
 
-    CamRotation = random.random() * 360
-    v_cue = 15
+    CamRotation = 0
+    v_cue = 0.5
     cue_angle = 0
     top_back_spin = 0
     left_right_spin = 0
@@ -72,7 +57,7 @@ for step in range(10):
         a=table.BilliardTable.r * left_right_spin / 100,
         b=table.BilliardTable.r * top_back_spin / 100,
         theta=cue_angle,
-        v_cue=v_cue / V_CUE_DECIMAL_PLACE)
+        v_cue=v_cue)
     cue_ball_traject.init_collide_outcome(
         state=calculate.STATIONARY_STATE,
         heading_angle=(CamRotation + 360) % 360,
@@ -87,7 +72,7 @@ for step in range(10):
         find_traject=True)
     normal_loop = int(time_to_event / common.NOR_SAMP_PERIOD)
     remainder_time = time_to_event % common.NOR_SAMP_PERIOD
-    tstart = time.time()
+
     while True:
         # No events occurred in normal loop
         for i in range(normal_loop):
@@ -100,7 +85,7 @@ for step in range(10):
                 ball.heading_angle_to_render.append(ball.heading_angle)
                 ball.heading_angle_changed_to_render.append(False)
 
-            frame_to_render.append(common.NOR_FRAME_PER_SEC)
+            frame_to_render.append(1 / common.NOR_SAMP_PERIOD)
 
         # Events occurred in the lasted loop
         calculate.PoolBall.t_table += remainder_time
@@ -122,16 +107,13 @@ for step in range(10):
 
         if remainder_time:
             frame_to_render.append(
-                common.NOR_FRAME_PER_SEC
+                1 / common.NOR_SAMP_PERIOD
                 * (common.NOR_SAMP_PERIOD / remainder_time))
         else:
-            frame_to_render.append(common.NOR_FRAME_PER_SEC)
+            frame_to_render.append(1 / common.NOR_SAMP_PERIOD)
 
         if all(ball_obj.present_state == calculate.STATIONARY_STATE
                for ball_obj in calculate.PoolBall.instances_traject):
-            break
-        elif time.time() - tstart > 2:
-            print('timeout')
             break
         else:
             tmp_time_predict = time.monotonic()

@@ -5,6 +5,8 @@ import table
 import random
 import calculate
 import numpy as np
+import imageio
+from PIL import Image
 
 
 table.BilliardTable.set_detail_auto(
@@ -16,6 +18,7 @@ calculate.BilliardBall.set_mass(common.DEF_BALL_MASS, common.DEF_CUE_MASS)
 calculate.CalConst.initial_constant()
 
 DISPLAY = pi3d.Display.create(x=120, y=100, w=110 * 5, h=190 * 5)
+
 DISPLAY.frames_per_second = 30
 BallShader = pi3d.Shader("mat_reflect")
 TableShader = BallShader
@@ -255,7 +258,70 @@ def plot_trajectories():
 
     track.buf[0].re_init(traject_list)
 
-def plot_table(file_name):
+
+def move_ball_to_stationary(frame_to_render):
+    render_index = len(frame_to_render) - 1
+
+    for ball_obj_traject in calculate.PoolBall.instances_traject:
+        ball_obj = next(i for i in calculate.PoolBall.instances if i.ball_index == ball_obj_traject.ball_index)
+
+        previous_r = ball_obj.r
+        ball_obj.r = ball_obj_traject.r_to_render[render_index]
+        # ball_obj.w_roll = ball_obj_traject.w_to_render[render_index]
+        ball_obj.present_state = ball_obj_traject.state_to_render[
+            render_index]
+        ball_obj.heading_angle = ball_obj_traject.heading_angle_to_render[
+            render_index]
+        ball_obj.heading_angle_changed = ball_obj_traject.heading_angle_changed_to_render[
+            render_index]
+
+
+
+def plot_animation(frame_to_render, file_name, duration):
+
+    images = []
+    print(frame_to_render)
+    for render_index in range(len(frame_to_render)):
+        for ball_obj_traject in calculate.PoolBall.instances_traject:
+            ball_obj = next(i for i in calculate.PoolBall.instances if i.ball_index == ball_obj_traject.ball_index)
+
+            previous_r = ball_obj.r
+            ball_obj.r = ball_obj_traject.r_to_render[render_index]
+            # ball_obj.w_roll = ball_obj_traject.w_to_render[render_index]
+            ball_obj.present_state = ball_obj_traject.state_to_render[
+                render_index]
+            ball_obj.heading_angle = ball_obj_traject.heading_angle_to_render[
+                render_index]
+            ball_obj.heading_angle_changed = ball_obj_traject.heading_angle_changed_to_render[
+                render_index]
+
+        DISPLAY.clear()
+        CAMERA.reset()
+        CAMERA.rotateX(-CamTilt)
+        CAMERA.rotateY(0)
+        cue_ball = find_ball(0)
+        CAMERA.position((0, (cue_ball.r[common.Z_AXIS] * common.DIM_RATIO)
+                         + (CamRadius * sin(radians(CamTilt))), 0))
+
+        TableModel.draw()
+        for ball_obj in calculate.PoolBall.instances:
+            ball_obj.move_draw()
+
+        with DISPLAY.lock:
+            DISPLAY.sprites_to_load, to_load = set(), DISPLAY.sprites_to_load
+            DISPLAY.sprites.extend(to_load)
+        DISPLAY._for_each_sprite(lambda s: s.load_opengl(), to_load)
+
+        DISPLAY._tidy()
+        img = pi3d.screenshot()
+        im = Image.frombuffer('RGB', (DISPLAY.width, DISPLAY.height), img, 'raw', 'RGB', 0, 1)
+        images.append(np.array(img, dtype=np.uint8))
+    if frame_to_render:
+        imageio.mimwrite(file_name, images, 'GIF-FI', duration=duration)
+
+
+def plot_table(file_name=None):
+    """show static table."""
     DISPLAY.clear()
     CAMERA.reset()
     CAMERA.rotateX(-CamTilt)
@@ -266,7 +332,6 @@ def plot_table(file_name):
 
     TableModel.draw()
     for ball_obj in calculate.PoolBall.instances:
-        print(ball_obj.ball_index, ball_obj.r)
         ball_obj.move_draw()
 
     with DISPLAY.lock:
@@ -275,4 +340,5 @@ def plot_table(file_name):
     DISPLAY._for_each_sprite(lambda s: s.load_opengl(), to_load)
 
     DISPLAY._tidy()
-    pi3d.screenshot(file_name)
+    if file_name is not None:
+        pi3d.screenshot(file_name)

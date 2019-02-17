@@ -3,3 +3,4 @@ scr_caps
 speedup/build
 speedup/solve.egg-info
 speedup/*.so
+*.gif

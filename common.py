@@ -68,7 +68,7 @@ SIN_30 = np.sin(np.radians(30))
 COS_30 = np.cos(np.radians(30))
 
 NOR_SAMP_PERIOD = 0.032  # 32 ms
-NOR_FRAME_PER_SEC = 1 / NOR_SAMP_PERIOD  # 30.xx frame/sec
+
 
 SAMP_PERIOD_EPSIL = NOR_SAMP_PERIOD / 100
 
