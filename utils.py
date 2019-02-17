@@ -246,13 +246,6 @@ def create_ball():
         ball_obj.shadow.set_draw_details(ShadowShader, [Shadowtex])
 
 
-def set_position(ball_index, r, on_table=True):
-    if on_table:
-        z = table.BilliardTable.table_height + table.BilliardTable.r
-    else:
-        z = table.BilliardTable.r
-    find_ball(ball_index).r = np.array([r[0], r[1], z])
-
 # def plot_trajectories():
 #     track.draw()
 #     if len(traject_list) < 500:
@@ -329,7 +322,8 @@ def plot_animation(frame_to_render, file_name, duration):
         im.thumbnail((im.size[0] // 3, im.size[1] // 3), Image.ANTIALIAS)
         im.save(f'.gif/{100000 + render_index}.png')
     if frame_to_render:
-        os.system(f'convert .gif/* {file_name}')
+        os.system(f'convert .gif/* .tmp.gif')
+        os.system(f'convert .tmp.gif -fuzz 10% -layers Optimize {file_name}')
         print(f'generate {file_name}')
 
 def plot_table(file_name=None):
