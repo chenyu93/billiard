@@ -12,8 +12,8 @@ from PIL import Image
 
 
 class DisplaySwitch:
-    DISPLAY = None
-    CAMERA = None
+    DISPLAY = pi3d.Display.create(x=120, y=100, w=110 * 5, h=190 * 5)
+    CAMERA = pi3d.Camera.instance()
     @staticmethod
     def use_display():
         DisplaySwitch.DISPLAY = pi3d.Display.create(x=120, y=100, w=110 * 5, h=190 * 5)

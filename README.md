@@ -5,10 +5,11 @@ billiard
 
 ## firsttime install
 ```bash
+sudo apt install mesa-utils-extra
 sudo apt install imagemagick graphviz -y
 
 
-pip install shapely msgpack_numpy pi3d gprof2dot
+pip install cython pillow shapely msgpack_numpy pi3d gprof2dot
 
 cd speed
 python setup.py build_ext -i

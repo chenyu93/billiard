@@ -1,4 +1,6 @@
 from billiard_env.pool_env import Env
+from billiard_env.utils import DisplaySwitch
+
 
 Env.set_speed(0.032)   # 1 / 0.0032 = 31.25 fps
 state = Env.get_state()
