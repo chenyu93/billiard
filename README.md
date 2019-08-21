@@ -1,4 +1,4 @@
-billiard
+WIP, not stable.
 
 # Install
 
